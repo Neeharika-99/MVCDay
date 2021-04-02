@@ -1,0 +1,44 @@
+﻿@using System.Collections.Generic;
+@{
+    ViewBag.Title = "GetEmployeeByDeptSalary";
+}
+
+<h2>GetEmployeeByDeptSalary</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div>
+        Enter DeptName:<input type="text" name="dept" />
+    </div>
+    <div>
+        Enter Salary:@Html.TextBox("Salary")
+    </div>
+    <div>
+        <input type="submit" value="Select" />
+    </div>
+
+    if (Session["data"] != null)
+    {
+        IQueryable<MVCDay.Models.Employee> emp =
+            (IQueryable<MVCDay.Models.Employee>)Session["data"]; //typecasting
+        <table border="1">
+            @foreach (var e in emp)
+            {
+                <tr>
+                    <td>@e.EmpID</td>
+                    <td>@e.EmpName</td>
+                    <td>@e.Dept</td>
+                    <td>@e.Desg</td>
+                    <td>@e.Salary</td>
+                    <td>@e.projid</td>
+                </tr>
+            }
+        </table>
+    }
+}
+
+    <div>
+        @Html.ActionLink("Insert New","InsertNewEmployee")
+    </div>
+

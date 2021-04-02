@@ -1,0 +1,36 @@
+﻿@model List<MVCDay.Models.Employee>
+@{
+    ViewBag.Title = "GetEmployees";
+}
+
+<h2>GetEmployees</h2>
+<table border="1">
+    <tr>
+        <th>EmpID</th>
+        <th>EmpName</th>
+        <th>Dept</th>
+        <th>Desg</th>
+        <th>Salary</th>
+        <th>Project ID</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var m in Model)
+    {
+<tr>
+    <td>@m.EmpID</td>
+    <td>@m.EmpName</td>
+    <td>@m.Dept</td>
+    <td>@m.Desg</td>
+    <td>@m.Salary</td>
+    <td>@m.projid</td>
+    <td>@Html.ActionLink("Edit:" + m.EmpID, "UpdateEmployee", "RegForm", new { id = m.EmpID },null)</td>
+    <td>@Html.ActionLink("Delete:" + m.EmpID, "DeleteEmployee", "RegForm", new { id = m.EmpID },null)</td>
+</tr>
+    }
+</table>
+<div>
+    @Html.ActionLink("Insert New", "InsertNewEmployee")
+</div>
+
+

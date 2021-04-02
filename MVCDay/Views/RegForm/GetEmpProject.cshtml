@@ -1,0 +1,28 @@
+﻿@model IEnumerable<MVCDay.Models.CustomEmpProject>
+@{
+    ViewBag.Title = "GetEmpProject";
+}
+
+<h2>Get Emp Project</h2>
+<table border="1">
+    <tr>
+        <th>EmpID</th>
+        <th>Name</th>
+        <th>Dept</th>
+        <th>ProjName</th>
+        <th>Domain</th>
+    </tr>
+    @foreach(var m in Model)
+    {
+<tr>
+    <td>@m.EmpId</td>
+    <td>@m.Name</td>
+    <td>@m.Dept</td>
+    <td>@m.ProjName</td>
+    <td>@m.Domain</td>
+</tr>
+    }
+</table>
+<div>
+    @Html.ActionLink("New Employee","InsertNewEmployee")
+</div>

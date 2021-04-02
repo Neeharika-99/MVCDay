@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "InsertNewEmployee";
+}
+
+<h2>InsertNewEmployee</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <table border="1">
+        <tr>
+            <td>Enter EmpID</td>
+            <td>@Html.TextBox("txtempid")</td>
+        </tr>
+        <tr>
+            <td>Enter Name</td>
+            <td>@Html.TextBox("txtempname")</td>
+        </tr>
+        <tr>
+            <td>Enter Department</td>
+            <td>
+                @Html.DropDownList("depart", new List<SelectListItem> {
+           new SelectListItem{Text="IT",Value="IT"},
+           new SelectListItem{Text="ACCOUNTS",Value="ACCT"},
+           new SelectListItem{Text="HR",Value="HR"},
+           new SelectListItem{Text="Manager",Value="Manager"}
+       })
+        </td>
+    </tr>
+    <tr>
+        <td>Select designation</td>
+        <td>
+            <select name="ddldesg">
+                <option value="Traineee">Trainee</option>
+                <option value="Sr.Exec">Senior Executive</option>
+                <option value="Manager">Manager</option>
+                <option value="CEO">CEO</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Enter Salary</td>
+        <td>
+            <input type="number" name="txtSalary" />
+        </td>
+    </tr>
+        <tr>
+            <td>Select Projid</td>
+            <td>@Html.DropDownList("ddlpid",ViewData["proj"]as SelectList)</td>
+        </tr>
+    <tr>
+        <td><input type="submit" value="New Registration" /></td>
+        <td><input type="reset" value="Cancel" /></td>
+    </tr>
+</table>
+}
+<div>
+    @Html.ActionLink("Select Employee", "GetEmployees")
+    @*this is html helper for <a href="">*@
+</div>
+<div>
+    @Html.ActionLink("Select Employee By Dept and Salary", "GetEmployeeByDeptSalary")
+</div>
+<div>
+    @Html.ActionLink("Insert Project","InsertProject")
+</div>
+<div>
+    @Html.ActionLink("Get EmpProj Details", "GetEmpProject")
+</div>
+<div>
+    @Html.ActionLink("Call SP" , "SelectAndUpdateProjectSP")
+</div>

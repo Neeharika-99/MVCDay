@@ -1,0 +1,27 @@
+﻿@model MVCDay.Models.ProjectInfo
+@{
+    ViewBag.Title = "InsertProject";
+}
+
+<h2>InsertProject</h2>
+
+<form method="post">
+    @Html.ValidationSummary(true)
+    <div>
+        Enter Project Name
+        @Html.TextBoxFor(x => x.projname)
+        @Html.ValidationMessageFor(x => x.projname)
+    </div>
+    <div>
+        Enter Domain
+        @Html.TextBoxFor(x => x.domain)
+        @Html.ValidationMessageFor(x => x.domain)
+    </div>
+    <div>
+       <input type="submit" value="Insert NewProject"/>
+        
+    </div>
+</form>
+<div>
+    @Html.ActionLink("Insert Employee", "InsertNewEmployee")
+</div>
